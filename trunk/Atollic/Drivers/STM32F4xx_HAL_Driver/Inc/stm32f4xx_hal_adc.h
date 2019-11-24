@@ -199,7 +199,6 @@ typedef struct
 /* States of ADC multi-mode */
 #define HAL_ADC_STATE_MULTIMODE_SLAVE   0x00100000U    /*!< Not available on STM32F4 device: ADC in multimode slave state, controlled by another ADC master ( */
 
-
 /** 
   * @brief  ADC handle Structure definition
   */ 

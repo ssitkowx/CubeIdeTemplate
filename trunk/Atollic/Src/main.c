@@ -102,6 +102,8 @@ void StartDefaultTask(void const * argument);
 
 /* USER CODE END 0 */
 
+void AppProcess (void);
+
 /**
   * @brief  The application entry point.
   *
@@ -177,6 +179,7 @@ int main(void)
   while (1)
   {
 
+	  AppProcess ();
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
