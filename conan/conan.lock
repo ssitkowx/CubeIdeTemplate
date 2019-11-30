@@ -1,0 +1,13 @@
+{
+ "profile_host": "[settings]\narch=x86_64\narch_build=x86_64\nbuild_type=Release\ncompiler=Visual Studio\ncompiler.runtime=MD\ncompiler.version=16\nos=Windows\nos_build=Windows\n[options]\n[build_requires]\n[env]\n",
+ "graph_lock": {
+  "nodes": {
+   "1740355c-12ed-11ea-921b-1867b052dc85": {
+    "pref": "packageTemplate/0.1:3fb49604f9c2f729b85ba3115852006824e72cab",
+    "options": "shared=False",
+    "path": "C:\\Users\\sitko\\Desktop\\Projekty\\GIT\\PackageTemplate\\conan\\conanfile.py"
+   }
+  }
+ },
+ "version": "0.1"
+}
