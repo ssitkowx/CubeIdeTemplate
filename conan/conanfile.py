@@ -2,16 +2,17 @@ from conans import ConanFile, CMake, tools
 import os
 
 class HelloConan(ConanFile):
-    name            = "packageTemplate"
+    name            = "EvolutionBoard"
     version         = "0.1"
     license         = "<Put the package license here>"
-    url             = "https://github.com/ssitkowx/PackageTemplate"
+    url             = "https://github.com/ssitkowx/EvolutionBoard"
     description     = "Package template"
     settings        = "os", "compiler", "build_type", "arch"
     options         = {"shared": [True, False]}
     default_options = "shared=False"
     generators      = "cmake"
     exports_sources = "source/*"
+    requires        = ("packageTemplate/0.1@ssitkowx/testing")
     
     def source(self):
         cloneCmd = 'git clone ' + self.url + '.git'
@@ -25,8 +26,8 @@ class HelloConan(ConanFile):
         cmake.build()
         
     def package(self):
-        self.copy('*.h'     , dst='include', src='../Project/include', keep_path=False)
-        self.copy('*.hxx'   , dst='include', src='../Project/include', keep_path=False)
+        self.copy('*.h'     , dst='include', src='../Project/ProjectTemplate', keep_path=False)
+        self.copy('*.hxx'   , dst='include', src='../Project/ProjectTemplate', keep_path=False)
         self.copy('*.lib'   , dst='lib'    , src='../build/lib'      , keep_path=False)
         self.copy('*.dll'   , dst='bin'    , src='../build/bin'      , keep_path=False)
         self.copy('*.dylib*', dst='lib'    , src='../build/lib'      , keep_path=False)
