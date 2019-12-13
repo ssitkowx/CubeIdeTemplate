@@ -38,9 +38,6 @@
 #ifndef __STM32_HAL_LEGACY
 #define __STM32_HAL_LEGACY
 
-#include <stm32f401xc.h>     // sylsit
-#include <stm32f4xx.h>       // sylsit
-
 #ifdef __cplusplus
  extern "C" {
 #endif

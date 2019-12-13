@@ -1,38 +1,45 @@
 from conans import ConanFile, CMake, tools
 import os
 
-class HelloConan(ConanFile):
+class Conan(ConanFile):
     name            = "EvolutionBoard"
-    version         = "0.1"
-    license         = "<Put the package license here>"
-    url             = "https://github.com/ssitkowx/EvolutionBoard"
-    description     = "Package template"
+    version         = "1.0"
+    license         = "freeware"
+    url             = "https://github.com/ssitkowx/EvolutionBoard.git"
+    description     = "Template for embedded project"
     settings        = "os", "compiler", "build_type", "arch"
     options         = {"shared": [True, False]}
     default_options = "shared=False"
     generators      = "cmake"
-    exports_sources = "source/*"
-    requires        = ("packageTemplate/0.1@ssitkowx/testing")
+    #requires        = ("Template/1.0@ssitkowx/stable")
     
     def source(self):
-        cloneCmd = 'git clone ' + self.url + '.git'
+        cloneCmd = 'git clone ' + self.url
         self.run(cloneCmd)
 
     def build(self):
-        currentPath = os.getcwd().replace('\conan','')
-        buildPath   = currentPath + '\\build'
-        cmake       = CMake(self)
-        cmake.configure(source_dir=currentPath, build_dir=buildPath)
-        cmake.build()
+        currentPath = os.getcwd();
+        projectPath = ''
+        if os.path.exists(currentPath + '\\conanfile.py'):
+            projectPath = os.getcwd().replace('\Conan','')
+        elif os.path.exists(currentPath + '\\conanbuildinfo.cmake'):
+            projectPath = os.getcwd() + '\\' + self.name
+        else:
+            print('Unknown path in build')
         
-    def package(self):
-        self.copy('*.h'     , dst='include', src='../Project/ProjectTemplate', keep_path=False)
-        self.copy('*.hxx'   , dst='include', src='../Project/ProjectTemplate', keep_path=False)
-        self.copy('*.lib'   , dst='lib'    , src='../build/lib'      , keep_path=False)
-        self.copy('*.dll'   , dst='bin'    , src='../build/bin'      , keep_path=False)
-        self.copy('*.dylib*', dst='lib'    , src='../build/lib'      , keep_path=False)
-        self.copy('*.so'    , dst='lib'    , src='../build/lib'      , keep_path=False)
-        self.copy('*.a'     , dst='lib'    , src='../build/lib'      , keep_path=False)
+        buildPath   = projectPath# + '\\Build'
+        cmake       = CMake(self, generator="Eclipse CDT4 - MinGW Makefiles")
+        cmake.configure(source_dir=projectPath, build_dir=buildPath)
+        cmake.build()
 
-    #def package_info(self):
-        #self.cpp_info.libs = ["PackageTemplate"]
+    def package(self):
+        self.copy('*.h'     , dst='include', src='../Project'  , keep_path=False)
+        self.copy('*.hxx'   , dst='include', src='../Project'  , keep_path=False)
+        self.copy('*.lib'   , dst='lib'    , src='../build/lib', keep_path=False)
+        self.copy('*.dll'   , dst='bin'    , src='../build/bin', keep_path=False)
+        self.copy('*.dylib*', dst='lib'    , src='../build/lib', keep_path=False)
+        self.copy('*.so'    , dst='lib'    , src='../build/lib', keep_path=False)
+        self.copy('*.a'     , dst='lib'    , src='../build/lib', keep_path=False)
+
+    def package_info(self):
+        self.cpp_info.libs = [self.name]

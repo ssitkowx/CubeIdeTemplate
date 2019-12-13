@@ -43,9 +43,8 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
+#include "stm32f4xx.h"
 #include "Legacy/stm32_hal_legacy.h"
-#include <core_cm4.h>     // sylsit
 #include <stdio.h>
 
 /* Exported types ------------------------------------------------------------*/
