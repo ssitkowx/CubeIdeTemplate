@@ -30,6 +30,7 @@ class Conan(ConanFile):
         buildPath   = projectPath# + '\\Build'
         cmake       = CMake(self, generator="Eclipse CDT4 - MinGW Makefiles")
         cmake.configure(source_dir=projectPath, build_dir=buildPath)
+        
         cmake.build()
 
     def package(self):
