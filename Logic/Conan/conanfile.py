@@ -21,7 +21,7 @@ class Conan(ConanFile):
     def source(self):
         packageName = 'Template'
         version     = '1.0'
-        user        = 'syslit'
+        user        = 'sylsit'
         channel     = 'testing'
     
         if not os.path.isdir(self.downloadsPath):
