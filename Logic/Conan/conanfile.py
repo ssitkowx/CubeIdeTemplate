@@ -2,21 +2,42 @@ from conans import ConanFile, CMake, tools
 import os
 
 class Conan(ConanFile):
-    name            = "TrueStudioTemplate"
-    version         = "1.0"
-    license         = "freeware"
-    url             = "https://github.com/ssitkowx/TrueStudioTemplate.git"
-    description     = "Template for projects and packages"
-    settings        = "os", "compiler", "build_type", "arch"
-    options         = {"shared": [True, False]}
-    default_options = "shared=False"
-    generators      = "cmake"
-    author          = "sylsit"
-    requires        = "Template/1.0@sylsit/testing"
+    name               = "TrueStudioTemplate"
+    version            = "1.0"
+    license            = "freeware"
+    repoUrl            = "https://github.com/ssitkowx"
+    url                = repoUrl + "/TrueStudioTemplate.git"
+    downloadsPath      = "C:/Users/sitko/.conan/download"
+    description        = "Template for projects and packages"
+    settings           = "os", "compiler", "build_type", "arch"
+    options            = {"shared": [True, False]}
+    default_options    = "shared=False"
+    generators         = "cmake"
+    author             = "sylsit"
+    requires           = "Template/1.0@sylsit/testing"
     
+    #def 
+
     def source(self):
-        cloneCmd = 'git clone ' + self.url
-        self.run(cloneCmd)
+        packageName = 'Template'
+        version     = '1.0'
+        user        = 'syslit'
+        channel     = 'testing'
+    
+        if not os.path.isdir(self.downloadsPath):
+            os.mkdir(self.downloadsPath)
+
+        os.chdir(self.downloadsPath)
+        url = self.repoUrl + '/' + packageName + '.git'
+
+        if not os.path.isdir(packageName):
+            cloneCmd = 'git clone ' + url
+            self.run(cloneCmd)
+        
+        conanFolderPathCmd = self.downloadsPath + '/' + packageName + '/Conan'
+        os.chdir(conanFolderPathCmd)
+        exportCmd = 'conan create . ' + user + '/' + channel
+        self.run(exportCmd)
 
     def build(self):
         currentPath = os.getcwd();
@@ -39,13 +60,13 @@ class Conan(ConanFile):
         if not os.path.exists(projectPath + '\\CMakeLists.txt'):
             projectPath = self.buildPath.replace('Build','')
     
-        self.copy('*.h'     , dst='include', src= projectPath + '\\Project'  , keep_path=False)
-        self.copy('*.hxx'   , dst='include', src= projectPath + '\\Project'  , keep_path=False)
-        self.copy('*.lib'   , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
-        self.copy('*.dll'   , dst='bin'    , src= projectPath + '\\build/bin', keep_path=False)
-        self.copy('*.dylib*', dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
-        self.copy('*.so'    , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
-        self.copy('*.a'     , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
+        self.copy('*.h'     , dst='include', src= projectPath + '/Project'  , keep_path=False)
+        self.copy('*.hxx'   , dst='include', src= projectPath + '/Project'  , keep_path=False)
+        self.copy('*.lib'   , dst='lib'    , src= projectPath + '/build/lib', keep_path=False)
+        self.copy('*.dll'   , dst='bin'    , src= projectPath + '/build/bin', keep_path=False)
+        self.copy('*.dylib*', dst='lib'    , src= projectPath + '/build/lib', keep_path=False)
+        self.copy('*.so'    , dst='lib'    , src= projectPath + '/build/lib', keep_path=False)
+        self.copy('*.a'     , dst='lib'    , src= projectPath + '/build/lib', keep_path=False)
 
     def package_info(self):
         self.cpp_info.libs = [self.name]
