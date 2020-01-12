@@ -18,7 +18,7 @@ set  (ProjectIncludePath                  ${CurrentPath}/${ProjectName})
 FILE (GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
 FILE (GLOB_RECURSE ProjectFilesAndFolders ${ProjectIncludePath}/*)
 
-set  (TestIncludePath                     ${CurrentPath}/Test)
+set  (TestIncludePath                     ${CurrentPath}/Tests)
 FILE (GLOB_RECURSE TestFilesInclude       ${TestIncludePath}/*.h ${TestIncludePath}/*.hxx)
 FILE (GLOB_RECURSE TestFilesAndFolders    ${TestIncludePath}/*)
 
