@@ -50,19 +50,17 @@ ENDMACRO()
 set (BuildPath ${CurrentPath}/Build)
 REMOVE_FILES("${BuildPath}")
 
-message("${CONAN_LIBS}!!!!!!!!!!!!!!!!!")
-
 source_group               (TREE                       		  ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 add_executable             (${ProjectName}                    ${ProjectFilesAndFolders})
 target_include_directories (${ProjectName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
-target_link_libraries      (${ProjectName}                    ${CONAN_LIBS})
+target_link_libraries      (${ProjectName}                    ${PackagesLibsNames})
 target_compile_features    (${ProjectName} PUBLIC cxx_std_17)
 
 source_group               (TREE                       		  ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
 link_directories           (Tests                       	  ${BuildPath}/lib)
 add_executable             (Tests                       	  ${TestFilesAndFolders})
 target_include_directories (Tests    	   PUBLIC             ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-target_link_libraries      (Tests    	   ${LibraryName}     ${CONAN_LIBS})
+target_link_libraries      (Tests    	                      ${PackagesLibsNames})
 target_compile_features    (Tests    	   PUBLIC cxx_std_17)
 
 add_library                (${LibraryName} STATIC             ${ProjectFilesAndFolders})
