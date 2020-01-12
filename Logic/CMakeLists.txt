@@ -1,20 +1,20 @@
 PROJECT (TrueStudioTemplate)
 cmake_minimum_required (VERSION 3.16)
 
-set (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
-set (BuildPath   ${CurrentPath}/Build)
-set (ConanPath   ${CurrentPath}/Conan)
+set                    (ProjectName TrueStudioTemplate)
+set                    (LibraryName TrueStudioTemplateLib)
+set                    (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
+get_filename_component (ParentPath  ${CurrentPath} PATH)
 
-if (EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-    file (COPY ${ConanPath}/conanbuildinfo.cmake DESTINATION ${BuildPath})
-	include (${BuildPath}/conanbuildinfo.cmake)
-else ()
-	include (${ConanPath}/conanbuildinfo.cmake)
+if (EXISTS ${ParentPath}/conanbuildinfo.cmake)
+	include (${ParentPath}/conanbuildinfo.cmake)
+else()
+	include (${CurrentPath}/Conan/conanbuildinfo.cmake)
 endif()
 
 conan_basic_setup ()
 
-set  (ProjectIncludePath                  ${CurrentPath}/Project)
+set  (ProjectIncludePath                  ${CurrentPath}/${ProjectName})
 FILE (GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
 FILE (GLOB_RECURSE ProjectFilesAndFolders ${ProjectIncludePath}/*)
 
@@ -47,24 +47,27 @@ MACRO(REMOVE_FILES directory)
 	endforeach(file)
 ENDMACRO()
 
+set (BuildPath ${CurrentPath}/Build)
 REMOVE_FILES("${BuildPath}")
 
-source_group               (TREE                          		  ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
-add_executable             (Project                       		  ${ProjectFilesAndFolders})
-target_include_directories (Project    PUBLIC             		  ${ProjectSubdirectoriesPathsLists})
-target_link_libraries      (Project                       		  ${CONAN_LIBS})
-target_compile_features    (Project    PUBLIC cxx_std_17)
+message("${CONAN_LIBS}!!!!!!!!!!!!!!!!!")
 
-source_group               (TREE                          		  ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
-link_directories           (Test                          		  ${BuildPath}/lib)
-add_executable             (Test                          		  ${TestFilesAndFolders})
-target_include_directories (Test       PUBLIC             		  ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-target_link_libraries      (Test       TrueStudioTemplate         ${CONAN_LIBS})
-target_compile_features    (Test       PUBLIC cxx_std_17)
+source_group               (TREE                       		  ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
+add_executable             (${ProjectName}                    ${ProjectFilesAndFolders})
+target_include_directories (${ProjectName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
+target_link_libraries      (${ProjectName}                    ${CONAN_LIBS})
+target_compile_features    (${ProjectName} PUBLIC cxx_std_17)
 
-add_library                (TrueStudioTemplate STATIC             ${ProjectFilesAndFolders})
-target_include_directories (TrueStudioTemplate PUBLIC             ${ProjectSubdirectoriesPathsLists})
-target_compile_features    (TrueStudioTemplate PUBLIC cxx_std_17)
+source_group               (TREE                       		  ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
+link_directories           (Test                       		  ${BuildPath}/lib)
+add_executable             (Test                       		  ${TestFilesAndFolders})
+target_include_directories (Test    	   PUBLIC             ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
+target_link_libraries      (Test    	   ${LibraryName}     ${CONAN_LIBS})
+target_compile_features    (Test    	   PUBLIC cxx_std_17)
+
+add_library                (${LibraryName} STATIC             ${ProjectFilesAndFolders})
+target_include_directories (${LibraryName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
+target_compile_features    (${LibraryName} PUBLIC cxx_std_17)
 
 
 
