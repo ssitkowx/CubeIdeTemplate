@@ -1,4 +1,4 @@
-PROJECT(TrueStudioTrueStudioTemplate)
+PROJECT(AtollicTemplate)
 CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
 
 SET                   (ProjectName Project)
@@ -7,8 +7,6 @@ SET                   (LibraryName ${CMAKE_PROJECT_NAME}Lib)
 SET                   (ConanLibraryPath "C:/Users/sitko/.conan/data")
 SET                   (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
 GET_FILENAME_COMPONENT(ParentPath  ${CurrentPath} PATH)
-
-message ("current path ${CurrentPath}")
 
 IF(EXISTS ${ParentPath}/conanbuildinfo.cmake)
 	INCLUDE(${ParentPath}/conanbuildinfo.cmake)

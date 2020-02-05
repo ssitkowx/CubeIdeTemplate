@@ -2,11 +2,11 @@ from conans import ConanFile, CMake, tools
 import os
 
 class Conan(ConanFile):
-    name               = "TrueStudioTemplate"
+    name               = "AtollicTemplate"
     version            = "1.0"
     license            = "freeware"
     repoUrl            = "https://github.com/ssitkowx"
-    url                = repoUrl + "/TrueStudioTemplate.git"
+    url                = repoUrl + "/AtollicTemplate.git"
     downloadsPath      = "C:/Users/sitko/.conan/download"
     description        = "Template for projects and packages"
     settings           = "os", "compiler", "build_type", "arch"
@@ -54,7 +54,7 @@ class Conan(ConanFile):
         else:
             raise Exception('Unsupported os in build')
             
-        tools.replace_in_file(projectPath + "\\CMakeLists.txt", "Template", self.name, False)
+        tools.replace_in_file(projectPath + "\\CMakeLists.txt", "AtollicTemplate", self.name, False)
         
     def package(self):     
         currentPath = os.getcwd();
