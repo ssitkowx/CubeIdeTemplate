@@ -53,6 +53,8 @@ class Conan(ConanFile):
             cmake.build()
         else:
             raise Exception('Unsupported os in build')
+            
+        tools.replace_in_file(projectPath + "\\CMakeLists.txt", "Template", self.name, False)
         
     def package(self):     
         currentPath = os.getcwd();
