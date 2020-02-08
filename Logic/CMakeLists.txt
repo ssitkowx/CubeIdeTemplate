@@ -65,6 +65,7 @@ TARGET_INCLUDE_DIRECTORIES (${TestsName}   PUBLIC             ${ProjectSubdirect
 TARGET_LINK_LIBRARIES      (${TestsName}    	              ${PackagesLibsNames})
 TARGET_COMPILE_FEATURES    (${TestsName}   PUBLIC cxx_std_17)
 
+SOURCE_GROUP               (TREE                       		  ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 ADD_LIBRARY                (${LibraryName} STATIC             ${ProjectFilesAndFolders})
 TARGET_INCLUDE_DIRECTORIES (${LibraryName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
 TARGET_COMPILE_FEATURES    (${LibraryName} PUBLIC cxx_std_17)
