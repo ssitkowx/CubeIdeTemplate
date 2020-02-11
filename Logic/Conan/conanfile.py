@@ -14,6 +14,7 @@ class Conan(ConanFile):
     default_options = "shared=False"
     generators      = "cmake"
     author          = "sylsit"
+    requires        = "gtest/1.8.1@bincrafters/stable"
     build_requires  = []
     
     def createDownload(self):
@@ -53,7 +54,7 @@ class Conan(ConanFile):
             cmake.configure(source_dir=projectPath, build_dir=self.buildPath)
             cmake.build()
         else:
-            raise Exception('Unsupported os in build')
+            raise Exception('Unsupported platform or compiler')
             
         tools.replace_in_file(projectPath + "\\CMakeLists.txt", "AtollicTemplate", self.name, False)
         

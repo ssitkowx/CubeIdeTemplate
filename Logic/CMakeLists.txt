@@ -52,24 +52,28 @@ ENDMACRO()
 SET(BuildPath ${CurrentPath}/Build)
 REMOVE_FILES("${BuildPath}")
 
-SOURCE_GROUP               (TREE                       		  ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
-ADD_EXECUTABLE             (${ProjectName}                    ${ProjectFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (${ProjectName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
-TARGET_LINK_LIBRARIES      (${ProjectName}                    ${PackagesLibsNames})
-TARGET_COMPILE_FEATURES    (${ProjectName} PUBLIC cxx_std_17)
+MACRO(GET_LIBRARIES_PATHS_LISTS libraries_paths_lists)
+    SET(libraryPathsLists "")
+    FOREACH(library ${CONAN_LIBS})
+        SET(libraryPathsLists ${libraryPathsLists} ${ConanLibraryPath}/${library})
+    ENDFOREACH()
+    SET(${libraries_paths_lists} ${libraryPathsLists})
+ENDMACRO()
+
+SET(LibrariesPathsLists "")
+IF (NOT CONAN_LIBS STREQUAL "")
+	GET_LIBRARIES_PATHS_LISTS(LibrariesPathsLists)
+ENDIF()
 
 SOURCE_GROUP               (TREE                       		  ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
 LINK_DIRECTORIES           (${TestsName}                      ${BuildPath}/lib)
 ADD_EXECUTABLE             (${TestsName}                      ${TestFilesAndFolders})
 TARGET_INCLUDE_DIRECTORIES (${TestsName}   PUBLIC             ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-TARGET_LINK_LIBRARIES      (${TestsName}    	              ${PackagesLibsNames})
+TARGET_LINK_LIBRARIES      (${TestsName}    	              ${LibraryName} ${PackagesLibsNames})
 TARGET_COMPILE_FEATURES    (${TestsName}   PUBLIC cxx_std_17)
 
 SOURCE_GROUP               (TREE                       		  ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 ADD_LIBRARY                (${LibraryName} STATIC             ${ProjectFilesAndFolders})
 TARGET_INCLUDE_DIRECTORIES (${LibraryName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
+TARGET_LINK_LIBRARIES      (${LibraryName}    		          ${CONAN_LIBS_GTEST})
 TARGET_COMPILE_FEATURES    (${LibraryName} PUBLIC cxx_std_17)
-
-
-
-
