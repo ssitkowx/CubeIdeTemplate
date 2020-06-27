@@ -16,9 +16,8 @@ Logic:
 This is where external libraries and environment-dependent code are stored, but not hardware-dependent.
 
 # IV. Configuration:
-- Generate hal libraries from Cube
-- Open Atollic True Studio project from 'AtollicTemplate' folder,
-- Add files, folders and libraries to the project,
+- Generate hal libraries from CubeMx,
+- Add files, folders and libraries to the 'AtollicTemplate' project.
 
 # V. Builidng:
 - Open a project gui and build a project.
