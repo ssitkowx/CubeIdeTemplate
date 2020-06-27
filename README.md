@@ -16,8 +16,12 @@ Logic:
 This is where external libraries and environment-dependent code are stored, but not hardware-dependent.
 
 # IV. Configuration:
+- Atollic TrueSTUDIO® for STM32, Built on Eclipse Neon.1a. Version 9.3.1,
 - Generate hal libraries from CubeMx,
 - Add files, folders and libraries to the 'AtollicTemplate' project.
 
 # V. Builidng:
 - Open a project gui and build a project.
+
+# VI. Builidng:
+- Exclude 'main' from the build logic project.
