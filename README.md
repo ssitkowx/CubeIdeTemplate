@@ -23,5 +23,5 @@ This is where external libraries and environment-dependent code are stored, but 
 # V. Builidng:
 - Open a project gui and build a project.
 
-# VI. Builidng:
+# VI. Tips:
 - Exclude 'main' from the build logic project.
