@@ -10,14 +10,16 @@ Template for Atollic embedded projects.
 # III. Structure:
 The embedded project has been divided into two parts:
 Hardware:
-This is where the environment-specific code is kept.
+- This is where the environment-specific code is kept.
 
 Logic:
-This is where external libraries and environment-dependent code are stored, but not hardware-dependent.
+- This is where external libraries are stored,
+- This is where environment-specific and hardware-independent code is stored.
 
 # IV. Configuration:
 - Atollic TrueSTUDIO® for STM32, Built on Eclipse Neon.1a. Version 9.3.1,
-- Generate hal libraries from CubeMx,
+- Generate hal libraries from CubeMx version 5.3.0,
+- To enable C++ settings add <nature>org.eclipse.cdt.core.ccnature</nature> to .project,
 - Add files, folders and libraries to the 'AtollicTemplate' project.
 
 # V. Builidng:
