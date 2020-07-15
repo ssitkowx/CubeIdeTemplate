@@ -10,6 +10,7 @@ The code stored here is environment-specific, which means:
 
 # III. Structure:
 The embedded project has been divided into two parts:
+
 Logic:
 - This is where external generic libraries are stored,
 - This is where environment-specific but hardware-independent code is stored.
