@@ -20,7 +20,7 @@ Hardware:
 
 # IV. Configuration:
 Logic:
-The same as in the case of projects based on the "Template".
+- The same as in the case of projects based on the "Template".
 
 Hardware:
 - Atollic TrueSTUDIO® for STM32. Built on Eclipse Neon.1a. Version 9.3.1,
@@ -28,7 +28,7 @@ Hardware:
 
 # V. Builidng:
 Logic:
-The same as in the case of projects based on the "Template".
+- The same as in the case of projects based on the "Template".
 
 Hardware:
 - Add to the project files located in the ".conan\download" after "Logic" building,
