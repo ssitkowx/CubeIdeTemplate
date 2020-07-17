@@ -132,9 +132,12 @@
 							<inputType id="com.atollic.truestudio.gcc.input.1274347818" superClass="com.atollic.truestudio.gcc.input"/>
 						</tool>
 					</fileInfo>
+					<fileInfo id="com.atollic.truestudio.exe.debug.1518366166.954187394" name="main.cpp" rcbsApplicability="disable" resourcePath="Logic/Project/main.cpp" toolsToInvoke="com.atollic.truestudio.exe.debug.toolchain.gpp.981298185.1541193766">
+						<tool id="com.atollic.truestudio.exe.debug.toolchain.gpp.981298185.1541193766" name="C++ Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gpp.981298185"/>
+					</fileInfo>
 					<fileInfo id="com.atollic.truestudio.exe.debug.1518366166.1623629375" name="main.cxx" rcbsApplicability="disable" resourcePath="Logic/Tests/main.cxx" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="Logic/Tests/main.cxx" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Logic/Project/main.cpp|Logic/Tests/main.cxx" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
