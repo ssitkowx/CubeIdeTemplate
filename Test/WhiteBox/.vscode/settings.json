@@ -1,0 +1,7 @@
+{
+    "editor.renderWhitespace": "all",
+    "env": {
+        "myDefaultIncludePath": ["${workspaceFolder}", "${workspaceFolder}/include"],
+        "myCompilerPath": "/usr/bin/c99-gcc"
+    },
+}

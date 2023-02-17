@@ -1,7 +1,7 @@
 # AtollicTemplate
 
 # I. Description:
-Template for Atollic embedded projects.
+Template for CubeIde embedded projects.
 
 # II. Assumptions:
 The code stored here is environment-specific, which means:
@@ -28,8 +28,8 @@ Tests:
 
 # IV. Configuration:
 
-- Atollic TrueSTUDIO® for STM32. Built on Eclipse Neon.1a. Version 9.3.1,
-- CubeMx 5.3.0.
+- STM32CubeIDE Version: 1.11.2
+- CubeMx 6.7.0.
 
 # V. Builidng:
 Packages in External:
@@ -41,8 +41,4 @@ Project:
 - Open a project gui and build a project.
 
 # VI. Tips:
-- To enable C++ settings add <nature>org.eclipse.cdt.core.ccnature</nature> to .project.
-- After generating the equipment using CubeMx, transfer the .cproject, .project, .mxproject files from the Atollic folder to the folder with the project name (AtollicTemplate). 
-  - In the C/C++ Build->Settings->Tool Settings->C++ Linker->General settings we provide the path to the linker script,
-  - In C/C++ Build-> Target Settings we choose the type of processor,
-  - In C/C++ General->Paths and Symbols->Include, we provide the hardware paths updates.
+- During bringing new hardware to the project copy only necessary files (compare by files in project tree).
