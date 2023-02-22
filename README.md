@@ -43,8 +43,8 @@ Project:
 # VI. Tips:
 - During bringing new hardware to the project copy only necessary files (compare by files in project tree).
 - To enable C++ settings add org.eclipse.cdt.core.ccnature to .project.
-  After generating the equipment using CubeMx, transfer the .cproject, .project, .mxproject files from the Atollic folder to the folder with the project
+- After generating the equipment using CubeMx, transfer the .cproject, .project, .mxproject files from the Atollic folder to the folder with the project
   name (AtollicTemplate).
-  In the C/C++ Build->Settings->Tool Settings->C++ Linker->General settings we provide the path to the linker script,
-  In C/C++ Build-> Target Settings we choose the type of processor,
-  In C/C++ General->Paths and Symbols->Include, we provide the hardware paths updates.
+  - In the C/C++ Build->Settings->Tool Settings->C++ Linker->General settings we provide the path to the linker script,
+  - In C/C++ Build-> Target Settings we choose the type of processor,
+  - In C/C++ General->Paths and Symbols->Include, we provide the hardware paths updates.
