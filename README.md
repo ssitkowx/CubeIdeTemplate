@@ -1,4 +1,4 @@
-# AtollicTemplate
+# CubeIdeTemplate
 
 # I. Description:
 Template for CubeIde embedded projects.
