@@ -4,3 +4,5 @@ Project/.vscode
 Project/Debug
 Tests/WhiteBox/build
 Tests/WhiteBox/Build
+Tests/WhiteBox/.vscode
+Tests/WhiteBox/CMakeUserPresets.json
