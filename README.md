@@ -16,6 +16,10 @@ External:
 - This is where documents and resources are stored.
 
 Project:
+- Logic:
+  - This is were hardware-independent and general code is stored,
+  -  At the end of development this layer should be included in packages.
+
 - Middleware:
   - This is where environment-specific but hardware-independent code is stored.
 
@@ -39,9 +43,9 @@ Project:
 
 # VI. Tips:
 - To enable C++ settings add org.eclipse.cdt.core.ccnature to .project.
-- After generating the equipment using CubeMx, transfer the .cproject, .project, .mxproject files from the Atollic folder to the folder with the project
+- After generating the equipment using CubeMx, transfer the .cproject, .project, .mxproject files from the CubeIde folder to the folder with the project
   name (CubeIdeTemplate).
   - In the C/C++ Build->Settings->Tool Settings-MCU >G++ Linker->General we provide the path to the linker script,
   - In C/C++ General->Paths and Symbols->Include, we provide the paths updates.
-- In C/C++ Build->Build Variables ustawiamy zmienną APPLICATION_PACKAGES na /home/?/.conan2/download/repos
+- In C/C++ Build->Build set variable APPLICATION_PACKAGES on /home/?/.conan2/download/repos
 - During conan source . command execution might not find all paths, repeting operation might help.
